@@ -27,7 +27,9 @@ def get_token():
 
     return token
 
+def get_auth_header(token):
+    return {"Authorization": "Bearer " + token}
+
 
 if __name__ == "__main__":
-    token_status = get_token()
-    ic(token_status)
+    token = get_token()
