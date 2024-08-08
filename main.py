@@ -31,5 +31,16 @@ def get_auth_header(token):
     return {"Authorization": "Bearer " + token}
 
 
+def search_album(album, token):
+    url = "https://api.spotify.com/v1/search"
+    headers = get_auth_header(token)
+    query = f"?q={album}&type=album&track&limit=1"
+
+    query_url = url + query
+    result = get(query_url, headers= headers).json()
+    return result
+    
+
 if __name__ == "__main__":
     token = get_token()
+    ic(search_album("Swimming", token))
