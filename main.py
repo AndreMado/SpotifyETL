@@ -39,8 +39,21 @@ def search_album(album, token):
     query_url = url + query
     result = get(query_url, headers= headers).json()
     return result
+
+def search_artist(artist_name, token):
+    url = "https://api.spotify.com/v1/search"
+    header = get_auth_header(token)
+    query = f"?q={artist_name}&type=artist&limit=1"
+    query_url = url + query
+    result = get(query_url, headers= header).json()
+    result = result["artists"]["items"]
+    if len(result) == 0:
+        print("The artists don't exist anymore....")
+    else:
+        return result[0]["name"]
     
 
 if __name__ == "__main__":
     token = get_token()
-    ic(search_album("Swimming", token))
+    #ic(search_album("Swimming", token))
+    ic(search_artist("asdasdas", token))
