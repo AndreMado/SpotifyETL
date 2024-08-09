@@ -3,15 +3,16 @@ import os
 import base64
 from requests import post,get
 from icecream import ic
+import pandas as pd
 
 load_dotenv()
 
-client_id = os.getenv("CLIENT_ID")
-client_secret = os.getenv("SECRET_KEY")
+CLIENT_ID = os.getenv("CLIENT_ID")
+CLIENT_SECRET = os.getenv("SECRET_KEY")
 
 
 def get_token():
-    auth_string = client_id + ":" + client_secret
+    auth_string = CLIENT_ID + ":" + CLIENT_SECRET
     auth_bytes = auth_string.encode("utf-8")
     auth_base64 = str(base64.b64encode(auth_bytes), "utf-8")
 
@@ -63,9 +64,39 @@ def  artist_top_tracks(artist_id, token):
 if __name__ == "__main__":
     token = get_token()
     #ic(search_album("Swimming", token))
-    artist_input = input("Insert artist name: ")
-    artist_id = search_artist(artist_input, token)
-    songs = artist_top_tracks(artist_id, token)
+    #artist_input = input("Insert artist name: ")
+    artist_id = search_artist("Bad Bunny", token)
+    data = artist_top_tracks(artist_id, token)
+    
 
-    for i, song in enumerate(songs):
-        ic(f"{i + 1}. {song["name"]}")
+    songs_name= []
+    songs_release_date = []
+    release_date_precision = []
+    popularity = []
+    duration_ms = []
+    explicit = []
+
+    for song in data:
+        songs_name.append(song["name"])
+        songs_release_date.append(song["album"]["release_date"])
+        release_date_precision.append(song["album"]["release_date_precision"])
+        popularity.append(song["popularity"])
+        duration_ms.append(song["duration_ms"])
+        explicit.append(song["explicit"])
+
+
+    songs_dict={
+        "song_name":songs_name,
+        "song_release_date":songs_release_date,
+        "realese_date_precision": release_date_precision,
+        "popularity_rank":popularity,
+        "duration_in_ms": duration_ms,
+        "adult_letter": explicit
+    }
+
+    df = pd.DataFrame(data=songs_dict)
+
+    ic(df)
+
+    #for i, song in enumerate(data):
+    #    ic(f"{i + 1}. {song["name"]}")
