@@ -10,6 +10,9 @@ load_dotenv()
 CLIENT_ID = os.getenv("CLIENT_ID")
 CLIENT_SECRET = os.getenv("SECRET_KEY")
 
+def console_log(message):
+    with open("log.txt", "a") as log:
+        log.write(message)
 
 def get_token():
     auth_string = CLIENT_ID + ":" + CLIENT_SECRET
@@ -97,6 +100,7 @@ if __name__ == "__main__":
     df = pd.DataFrame(data=songs_dict)
 
     ic(df)
+    console_log("Testing feature")
 
     #for i, song in enumerate(data):
     #    ic(f"{i + 1}. {song["name"]}")
