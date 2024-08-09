@@ -63,5 +63,9 @@ def  artist_top_tracks(artist_id, token):
 if __name__ == "__main__":
     token = get_token()
     #ic(search_album("Swimming", token))
-    artist_id = search_artist("Bad Bunny", token)
-    ic(artist_top_tracks(artist_id, token))
+    artist_input = input("Insert artist name: ")
+    artist_id = search_artist(artist_input, token)
+    songs = artist_top_tracks(artist_id, token)
+
+    for i, song in enumerate(songs):
+        print(f"{i + 1}. {song["name"]}")
