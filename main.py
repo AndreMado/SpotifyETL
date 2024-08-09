@@ -68,4 +68,4 @@ if __name__ == "__main__":
     songs = artist_top_tracks(artist_id, token)
 
     for i, song in enumerate(songs):
-        print(f"{i + 1}. {song["name"]}")
+        ic(f"{i + 1}. {song["name"]}")
