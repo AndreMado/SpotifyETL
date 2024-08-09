@@ -50,10 +50,18 @@ def search_artist(artist_name, token):
     if len(result) == 0:
         print("The artists don't exist anymore....")
     else:
-        return result[0]["name"]
-    
+        return result[0]["id"]
+
+def  artist_top_tracks(artist_id, token):
+    url = "https://api.spotify.com/v1/artists/"
+    header = get_auth_header(token)
+    query = f"{artist_id}/top-tracks"
+    url_query = url + query
+    result = get(url_query, headers= header).json()["tracks"]
+    return result
 
 if __name__ == "__main__":
     token = get_token()
     #ic(search_album("Swimming", token))
-    ic(search_artist("asdasdas", token))
+    artist_id = search_artist("Bad Bunny", token)
+    ic(artist_top_tracks(artist_id, token))
