@@ -73,45 +73,47 @@ def  artist_top_tracks(artist_id, token):
     console_log("Connecting with the top 10 tracks of the artist")
     return result
 
+def to_dataframe(data):
+    songs_name= []
+    songs_release_date = []
+    release_date_precision = []
+    popularity = []
+    duration_ms = []
+    explicit = []
+
+
+    for song in data:
+        songs_name.append(song["name"])
+        songs_release_date.append(song["album"]["release_date"])
+        release_date_precision.append(song["album"]["release_date_precision"])
+        popularity.append(song["popularity"])
+        duration_ms.append(song["duration_ms"])
+        explicit.append(song["explicit"])
+
+
+    songs_dict={
+        "song_name":songs_name,
+        "song_release_date":songs_release_date,
+        "realese_date_precision": release_date_precision,
+        "popularity_rank":popularity,
+        "duration_in_ms": duration_ms,
+        "adult_letter": explicit
+    }
+
+    df = pd.DataFrame(data=songs_dict)
+    return df
+
 if __name__ == "__main__":
+    console_log("Initializating ETL process, extraction begins, getting token from Spotify...")
     token = get_token()
     #ic(search_album("Swimming", token))
-    #artist_input = input("Insert artist name: ")
-    artist_id = search_artist("Ariana Grande", token)
+    artist_input = input("Insert artist name: ")
+    artist_id = search_artist(artist_input, token)
     data = artist_top_tracks(artist_id, token)
+    ic(to_dataframe(data))
+
+
     
-    def to_dataframe(data):
-        songs_name= []
-        songs_release_date = []
-        release_date_precision = []
-        popularity = []
-        duration_ms = []
-        explicit = []
-
-
-        for song in data:
-            songs_name.append(song["name"])
-            songs_release_date.append(song["album"]["release_date"])
-            release_date_precision.append(song["album"]["release_date_precision"])
-            popularity.append(song["popularity"])
-            duration_ms.append(song["duration_ms"])
-            explicit.append(song["explicit"])
-
-
-        songs_dict={
-            "song_name":songs_name,
-            "song_release_date":songs_release_date,
-            "realese_date_precision": release_date_precision,
-            "popularity_rank":popularity,
-            "duration_in_ms": duration_ms,
-            "adult_letter": explicit
-        }
-
-        df = pd.DataFrame(data=songs_dict)
-        return df
-
-    ic(df)
-    console_log("Initializating ETL process, extraction begins, getting token from Spotify...")
 
     #for i, song in enumerate(data):
     #    ic(f"{i + 1}. {song["name"]}")
