@@ -32,10 +32,12 @@ def get_token():
     data = {"grant_type": "client_credentials"}
     result = post(url, headers= headers, data= data).json()
     token = result["access_token"]
+    console_log("The token has been gotten, time to create de Authorization header")
 
     return token
 
 def get_auth_header(token):
+    console_log("Header ready, calling search artist function...")
     return {"Authorization": "Bearer " + token}
 
 
@@ -58,7 +60,9 @@ def search_artist(artist_name, token):
     if len(result) == 0:
         print("The artists don't exist anymore....")
     else:
+        console_log("Spotify give us an 200 OK code, sucess in search")
         return result[0]["id"]
+        
 
 def  artist_top_tracks(artist_id, token):
     url = "https://api.spotify.com/v1/artists/"
@@ -66,45 +70,48 @@ def  artist_top_tracks(artist_id, token):
     query = f"{artist_id}/top-tracks"
     url_query = url + query
     result = get(url_query, headers= header).json()["tracks"]
+    console_log("Connecting with the top 10 tracks of the artist")
     return result
 
 if __name__ == "__main__":
     token = get_token()
     #ic(search_album("Swimming", token))
     #artist_input = input("Insert artist name: ")
-    artist_id = search_artist("Bad Bunny", token)
+    artist_id = search_artist("Ariana Grande", token)
     data = artist_top_tracks(artist_id, token)
     
-
-    songs_name= []
-    songs_release_date = []
-    release_date_precision = []
-    popularity = []
-    duration_ms = []
-    explicit = []
-
-    for song in data:
-        songs_name.append(song["name"])
-        songs_release_date.append(song["album"]["release_date"])
-        release_date_precision.append(song["album"]["release_date_precision"])
-        popularity.append(song["popularity"])
-        duration_ms.append(song["duration_ms"])
-        explicit.append(song["explicit"])
+    def to_dataframe(data):
+        songs_name= []
+        songs_release_date = []
+        release_date_precision = []
+        popularity = []
+        duration_ms = []
+        explicit = []
 
 
-    songs_dict={
-        "song_name":songs_name,
-        "song_release_date":songs_release_date,
-        "realese_date_precision": release_date_precision,
-        "popularity_rank":popularity,
-        "duration_in_ms": duration_ms,
-        "adult_letter": explicit
-    }
+        for song in data:
+            songs_name.append(song["name"])
+            songs_release_date.append(song["album"]["release_date"])
+            release_date_precision.append(song["album"]["release_date_precision"])
+            popularity.append(song["popularity"])
+            duration_ms.append(song["duration_ms"])
+            explicit.append(song["explicit"])
 
-    df = pd.DataFrame(data=songs_dict)
+
+        songs_dict={
+            "song_name":songs_name,
+            "song_release_date":songs_release_date,
+            "realese_date_precision": release_date_precision,
+            "popularity_rank":popularity,
+            "duration_in_ms": duration_ms,
+            "adult_letter": explicit
+        }
+
+        df = pd.DataFrame(data=songs_dict)
+        return df
 
     ic(df)
-    console_log("Testing feature")
+    console_log("Initializating ETL process, extraction begins, getting token from Spotify...")
 
     #for i, song in enumerate(data):
     #    ic(f"{i + 1}. {song["name"]}")
