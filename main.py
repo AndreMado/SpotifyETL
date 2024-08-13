@@ -4,6 +4,7 @@ import base64
 from requests import post,get
 from icecream import ic
 import pandas as pd
+from datetime import datetime
 
 load_dotenv()
 
@@ -11,8 +12,11 @@ CLIENT_ID = os.getenv("CLIENT_ID")
 CLIENT_SECRET = os.getenv("SECRET_KEY")
 
 def console_log(message):
+    timestamp_format = '%Y-%h-%d:%H-%M-%S'
+    now = datetime.now()
+    timestamp= now.strftime(timestamp_format)
     with open("log.txt", "a") as log:
-        log.write(message)
+        log.write(timestamp + ' : ' + message + '\n')
 
 def get_token():
     auth_string = CLIENT_ID + ":" + CLIENT_SECRET
