@@ -104,12 +104,31 @@ def to_dataframe(data):
     }
 
     df = pd.DataFrame(data=songs_dict)
+    console_log("The data has been turned into a Data Frame, ready for a validation check .....")
     return df
 
 ##############################################################TRANSFORM OR VALIDATION BLOCK OF CODE######################################################################
 
+def valid_data_check(df: pd.DataFrame) -> bool:
+    #Check if the Data Frame is empty
+    if df.empty:
+        console_log("No data here, finishing execution")
+        return False
+    
+    #Primary Key Check
+    if pd.Series(df['song_name']).is_unique:
+        pass
+    else:
+        raise Exception("Primary Key Check is violated, something wrong with the dataframe")
+    
+    #Check for null values
+    if df.isnull().values.any():
+        raise Exception("Null values has beem detected into the Data Frame.")
+    
+    return True
 
 
+##########################################################################LOAD BLOCK OF CODE##############################################################################
 
 if __name__ == "__main__":
     console_log("Initializating ETL process, extraction begins, getting token from Spotify...")
@@ -118,7 +137,10 @@ if __name__ == "__main__":
     artist_input = input("Insert artist name: ")
     artist_id = search_artist(artist_input, token)
     data = artist_top_tracks(artist_id, token)
-    ic(to_dataframe(data))
+    df = to_dataframe(data)
+
+    if valid_data_check(df):
+        console_log("Validation complete")
 
 
     
