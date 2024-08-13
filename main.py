@@ -6,6 +6,9 @@ from icecream import ic
 import pandas as pd
 from datetime import datetime
 
+
+##############################################################EXTRACT BLOCK OF CODE####################################################################################
+
 load_dotenv()
 
 CLIENT_ID = os.getenv("CLIENT_ID")
@@ -102,6 +105,11 @@ def to_dataframe(data):
 
     df = pd.DataFrame(data=songs_dict)
     return df
+
+##############################################################TRANSFORM OR VALIDATION BLOCK OF CODE######################################################################
+
+
+
 
 if __name__ == "__main__":
     console_log("Initializating ETL process, extraction begins, getting token from Spotify...")
