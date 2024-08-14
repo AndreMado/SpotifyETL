@@ -5,6 +5,9 @@ from requests import post,get
 from icecream import ic
 import pandas as pd
 from datetime import datetime
+import sqlite3
+import sqlalchemy
+from sqlalchemy.orm import sessionmaker
 
 
 ##############################################################EXTRACT BLOCK OF CODE####################################################################################
@@ -13,6 +16,7 @@ load_dotenv()
 
 CLIENT_ID = os.getenv("CLIENT_ID")
 CLIENT_SECRET = os.getenv("SECRET_KEY")
+DATABASE_LOCATION = "sqlite:///artist_top_tracks.sqlite"
 
 def console_log(message):
     timestamp_format = '%Y-%h-%d:%H-%M-%S'
@@ -130,6 +134,41 @@ def valid_data_check(df: pd.DataFrame) -> bool:
 
 ##########################################################################LOAD BLOCK OF CODE##############################################################################
 
+def load_db(df: pd.DataFrame) -> bool:
+    engine = sqlalchemy.create_engine(DATABASE_LOCATION)
+    conn = sqlite3.connect('artist_top_tracks.sqlite')
+    cursor = conn.cursor()
+
+    sql_query = """
+    CREATE TABLE IF NOT EXISTS top_tracks_badbunny(
+        song_name VARCHAR(200) PRIMARY KEY,
+        song_release_date VARCHAR(200),
+        realese_date_precision VARCHAR(200),
+        popularity_rank VARCHAR(200),
+        duration_in_ms VARCHAR(200),
+        adult_letter VARCHAR(200)
+    )
+    """
+
+    cursor.execute(sql_query)
+    try:
+        df.to_sql("top_tracks_badbunny",engine, index=False, if_exists='append')
+        console_log("The data has been insert in the database")
+    except:
+        ic("Data already exist in the database")
+
+    conn.close()
+    console_log("CLosing the database conection sucessfully")
+    return True
+
+
+    
+
+
+
+
+
+
 if __name__ == "__main__":
     console_log("Initializating ETL process, extraction begins, getting token from Spotify...")
     token = get_token()
@@ -140,7 +179,11 @@ if __name__ == "__main__":
     df = to_dataframe(data)
 
     if valid_data_check(df):
-        console_log("Validation complete")
+        console_log("Validation complete, proceed to Load stage")
+
+    ic(load_db(df))
+    
+
 
 
     
