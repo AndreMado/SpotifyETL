@@ -149,7 +149,8 @@ def load_db(df: pd.DataFrame) -> bool:
 
     sql_query = """
     CREATE TABLE IF NOT EXISTS top_tracks_badbunny(
-        song_name VARCHAR(200) PRIMARY KEY,
+        id VARCHAR(100) PRIMARY KEY,
+        song_name VARCHAR(200),
         song_release_date VARCHAR(200),
         realese_date_precision VARCHAR(200),
         popularity_rank VARCHAR(200),
