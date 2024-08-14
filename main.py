@@ -8,6 +8,7 @@ from datetime import datetime
 import sqlite3
 import sqlalchemy
 from sqlalchemy.orm import sessionmaker
+import uuid
 
 
 ##############################################################EXTRACT BLOCK OF CODE####################################################################################
@@ -80,6 +81,10 @@ def  artist_top_tracks(artist_id, token):
     console_log("Connecting with the top 10 tracks of the artist")
     return result
 
+def generate_uuid(song_name, release_date):
+    unique_string = f"{song_name}_{release_date}"
+    return uuid.uuid5(uuid.NAMESPACE_DNS, unique_string)
+
 def to_dataframe(data):
     songs_name= []
     songs_release_date = []
@@ -87,6 +92,7 @@ def to_dataframe(data):
     popularity = []
     duration_ms = []
     explicit = []
+    ids = []
 
 
     for song in data:
@@ -96,9 +102,11 @@ def to_dataframe(data):
         popularity.append(song["popularity"])
         duration_ms.append(song["duration_ms"])
         explicit.append(song["explicit"])
+        ids.append(str(generate_uuid(song["name"],song["album"]["release_date"])))
 
 
     songs_dict={
+        "id": ids,
         "song_name":songs_name,
         "song_release_date":songs_release_date,
         "realese_date_precision": release_date_precision,
@@ -120,7 +128,7 @@ def valid_data_check(df: pd.DataFrame) -> bool:
         return False
     
     #Primary Key Check
-    if pd.Series(df['song_name']).is_unique:
+    if pd.Series(df['id']).is_unique:
         pass
     else:
         raise Exception("Primary Key Check is violated, something wrong with the dataframe")
