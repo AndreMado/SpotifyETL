@@ -81,8 +81,13 @@ def  artist_top_tracks(artist_id, token):
     console_log("Connecting with the top 10 tracks of the artist")
     return result
 
-def generate_uuid(song_name, release_date):
-    unique_string = f"{song_name}_{release_date}"
+def timestamp_data():
+    timestamp_format = "%Y-%h-%d:%H-%M-%S"
+    now = datetime.now()
+    return now.strftime(timestamp_format)
+
+def generate_uuid(song_name, timestamp):
+    unique_string = f"{song_name}_{timestamp}"
     return uuid.uuid5(uuid.NAMESPACE_DNS, unique_string)
 
 def to_dataframe(data):
@@ -102,7 +107,8 @@ def to_dataframe(data):
         popularity.append(song["popularity"])
         duration_ms.append(song["duration_ms"])
         explicit.append(song["explicit"])
-        ids.append(str(generate_uuid(song["name"],song["album"]["release_date"])))
+        timestamp = timestamp_data()
+        ids.append(str(generate_uuid(song["name"],timestamp)))
 
 
     songs_dict={
