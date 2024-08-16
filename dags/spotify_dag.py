@@ -26,7 +26,7 @@ def testing_fuction():
 
 run_etl = PythonOperator(
     task_id='whole_spotify_etl',
-    python_callable=testing_fuction,
+    python_callable=testing_fuction(),
     dag=dag
 )
 

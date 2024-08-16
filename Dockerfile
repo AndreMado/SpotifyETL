@@ -20,3 +20,8 @@ EXPOSE 8080
 
 # 7. Comando por defecto para iniciar el servidor web de Airflow
 CMD ["airflow", "webserver"]
+
+#8. Copiar los elementos de la aplicación a docker.
+COPY log.txt /log.txt
+COPY main.py /main.py
+COPY artist_top_tracks.sqlite /artist_top_tracks.sqlite
