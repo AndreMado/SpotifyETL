@@ -21,12 +21,12 @@ dag = DAG(
     schedule_interval= timedelta(minutes=3)
 )
 
-def testing_fuction():
-    print("TESTINGGG")
+def testing_fuction(text):
+    print(text)
 
 run_etl = PythonOperator(
     task_id='whole_spotify_etl',
-    python_callable=testing_fuction(),
+    python_callable=testing_fuction("TESTING FUNCTION"),
     dag=dag
 )
 
