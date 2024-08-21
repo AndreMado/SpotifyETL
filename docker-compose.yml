@@ -1,3 +1,4 @@
 services:
   app-spotify:
     build: .
+    command: sh -c "tail -f /dev/null"
