@@ -3,4 +3,5 @@
 .metadata
 .locks
 .plugins
-GlobalCOnfiguration
+GlobalConfiguration
+.log
