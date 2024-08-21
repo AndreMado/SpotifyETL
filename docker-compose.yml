@@ -3,14 +3,14 @@ services:
     build: .
     volumes:
       - /home/madmado/Xdir/apps/SpotifyETL:/home/app
-    command: sh -c "tail -f /dev/null"
+    command: sh -c "python /home/app/main.py"
 
 
   dbeaver:
     image: dbeaver/cloudbeaver:latest
     container_name: dbeaver
     ports:
-      - "8080:8080"
+      - "8978:8978"
     volumes:
       - /home/madmado/Xdir/apps/SpotifyETL:/home/app
     environment:
