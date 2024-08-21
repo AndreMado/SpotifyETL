@@ -12,7 +12,7 @@ services:
     ports:
       - "8978:8978"
     volumes:
-      - /home/madmado/Xdir/apps/SpotifyETL:/home/app
+      - /home/madmado/Xdir/apps/SpotifyETL:/opt/cloudbeaver/workspace
     environment:
       - CB_INIT_DB_DRIVER_PATH=/opt/dbeaver/drivers
     depends_on:

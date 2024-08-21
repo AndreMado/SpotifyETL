@@ -1,1 +1,6 @@
 .env
+.data
+.metadata
+.locks
+.plugins
+GlobalCOnfiguration
