@@ -188,8 +188,8 @@ if __name__ == "__main__":
     console_log("Initializating ETL process, extraction begins, getting token from Spotify...")
     token = get_token()
     #ic(search_album("Swimming", token))
-    #artist_input = input("Insert artist name: ")
-    artist_id = search_artist("Ariana Grande", token)
+    artist_input = input("Insert artist name: ")
+    artist_id = search_artist(artist_input, token)
     data = artist_top_tracks(artist_id, token)
     df = to_dataframe(data)
 
