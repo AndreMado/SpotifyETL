@@ -1,6 +1,10 @@
 from airflow import DAG
-from airflow.operators.bash import BashOperator
+import sys
+from airflow.operators.python_operator import PythonOperator
 from datetime import datetime, timedelta
+from spotify_etl import run_spotify_etl
+
+sys.path.append('/opt/airflow/app')
 
 default_args = {
     'owner': 'airflow',
@@ -20,9 +24,12 @@ dag = DAG(
     schedule_interval= timedelta(minutes=5)
 )
 
-run_etl = BashOperator(
+def just_a_function():
+    print("HELLO")
+
+run_etl = PythonOperator(
     task_id='whole_spotify_etl',
-    bash_command='python /home/app/main.py',
+    python_callable=run_spotify_etl,
     dag=dag,
 )
 

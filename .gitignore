@@ -3,5 +3,11 @@
 .metadata
 .locks
 .plugins
-GlobalConfiguration
+GlobalConfiguration/
 .log
+logs/
+plugins/
+config/
+.work-data
+airflow.cfg
+webserver_config.py

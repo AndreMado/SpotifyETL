@@ -1,27 +1,22 @@
-[2024-08-22T04:47:04.557+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
-[2024-08-22T04:47:04.626+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spotify_dag.whole_spotify_etl scheduled__2024-08-21T00:35:00+00:00 [queued]>
-[2024-08-22T04:47:04.677+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spotify_dag.whole_spotify_etl scheduled__2024-08-21T00:35:00+00:00 [queued]>
-[2024-08-22T04:47:04.682+0000] {taskinstance.py:2856} INFO - Starting attempt 2 of 2
-[2024-08-22T04:47:04.745+0000] {taskinstance.py:2879} INFO - Executing <Task(BashOperator): whole_spotify_etl> on 2024-08-21 00:35:00+00:00
-[2024-08-22T04:47:04.781+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=195) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-08-22T16:23:16.010+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-08-22T16:23:16.168+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spotify_dag.whole_spotify_etl scheduled__2024-08-21T00:35:00+00:00 [queued]>
+[2024-08-22T16:23:16.267+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spotify_dag.whole_spotify_etl scheduled__2024-08-21T00:35:00+00:00 [queued]>
+[2024-08-22T16:23:16.268+0000] {taskinstance.py:2856} INFO - Starting attempt 2 of 2
+[2024-08-22T16:23:16.384+0000] {taskinstance.py:2879} INFO - Executing <Task(PythonOperator): whole_spotify_etl> on 2024-08-21 00:35:00+00:00
+[2024-08-22T16:23:16.413+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=168) is multi-threaded, use of fork() may lead to deadlocks in the child.
   pid = os.fork()
 
-[2024-08-22T04:47:04.794+0000] {standard_task_runner.py:72} INFO - Started process 249 to run task
-[2024-08-22T04:47:04.785+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'spotify_dag', 'whole_spotify_etl', 'scheduled__2024-08-21T00:35:00+00:00', '--job-id', '30', '--raw', '--subdir', 'DAGS_FOLDER/spotify_dag.py', '--cfg-path', '/tmp/tmpap856gfa']
-[2024-08-22T04:47:04.802+0000] {standard_task_runner.py:105} INFO - Job 30: Subtask whole_spotify_etl
-[2024-08-22T04:47:04.962+0000] {task_command.py:467} INFO - Running <TaskInstance: spotify_dag.whole_spotify_etl scheduled__2024-08-21T00:35:00+00:00 [running]> on host ef1a5f926b66
-[2024-08-22T04:47:05.264+0000] {taskinstance.py:3122} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='andresxmaldonado@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='spotify_dag' AIRFLOW_CTX_TASK_ID='whole_spotify_etl' AIRFLOW_CTX_EXECUTION_DATE='2024-08-21T00:35:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-08-21T00:35:00+00:00'
-[2024-08-22T04:47:05.268+0000] {logging_mixin.py:190} INFO - Task instance is in running state
-[2024-08-22T04:47:05.268+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
-[2024-08-22T04:47:05.269+0000] {logging_mixin.py:190} INFO - Current task name:whole_spotify_etl state:running start_date:2024-08-22 04:47:04.626669+00:00
-[2024-08-22T04:47:05.271+0000] {logging_mixin.py:190} INFO - Dag name:spotify_dag and current dag run status:running
-[2024-08-22T04:47:05.273+0000] {taskinstance.py:731} INFO - ::endgroup::
-[2024-08-22T04:47:05.274+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
-[2024-08-22T04:47:05.276+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /home/app/main.py']
-[2024-08-22T04:47:05.365+0000] {subprocess.py:86} INFO - Output:
-[2024-08-22T04:47:05.680+0000] {subprocess.py:93} INFO - python: can't open file '/home/app/main.py': [Errno 2] No such file or directory
-[2024-08-22T04:47:05.697+0000] {subprocess.py:97} INFO - Command exited with return code 2
-[2024-08-22T04:47:05.732+0000] {taskinstance.py:3301} ERROR - Task failed with exception
+[2024-08-22T16:23:16.414+0000] {standard_task_runner.py:72} INFO - Started process 197 to run task
+[2024-08-22T16:23:16.415+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'spotify_dag', 'whole_spotify_etl', 'scheduled__2024-08-21T00:35:00+00:00', '--job-id', '29', '--raw', '--subdir', 'DAGS_FOLDER/spotify_dag.py', '--cfg-path', '/tmp/tmptct16kfi']
+[2024-08-22T16:23:16.416+0000] {standard_task_runner.py:105} INFO - Job 29: Subtask whole_spotify_etl
+[2024-08-22T16:23:16.592+0000] {task_command.py:467} INFO - Running <TaskInstance: spotify_dag.whole_spotify_etl scheduled__2024-08-21T00:35:00+00:00 [running]> on host faa894082a18
+[2024-08-22T16:23:16.988+0000] {taskinstance.py:3122} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='andresxmaldonado@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='spotify_dag' AIRFLOW_CTX_TASK_ID='whole_spotify_etl' AIRFLOW_CTX_EXECUTION_DATE='2024-08-21T00:35:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-08-21T00:35:00+00:00'
+[2024-08-22T16:23:16.990+0000] {logging_mixin.py:190} INFO - Task instance is in running state
+[2024-08-22T16:23:16.995+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2024-08-22T16:23:16.996+0000] {logging_mixin.py:190} INFO - Current task name:whole_spotify_etl state:running start_date:2024-08-22 16:23:16.168726+00:00
+[2024-08-22T16:23:16.998+0000] {logging_mixin.py:190} INFO - Dag name:spotify_dag and current dag run status:running
+[2024-08-22T16:23:16.998+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-08-22T16:23:17.004+0000] {taskinstance.py:3301} ERROR - Task failed with exception
 Traceback (most recent call last):
   File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
     result = _execute_callable(context=context, **execute_callable_kwargs)
@@ -35,22 +30,35 @@ Traceback (most recent call last):
   File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
     return func(self, *args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 249, in execute
-    raise AirflowException(
-airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 2.
-[2024-08-22T04:47:05.754+0000] {logging_mixin.py:190} INFO - Task instance in failure state
-[2024-08-22T04:47:05.758+0000] {logging_mixin.py:190} INFO - Task start:2024-08-22 04:47:04.626669+00:00 end:2024-08-22 04:47:05.753408+00:00 duration:1.126739
-[2024-08-22T04:47:05.758+0000] {logging_mixin.py:190} INFO - Task:<Task(BashOperator): whole_spotify_etl> dag:<DAG: spotify_dag> dagrun:<DagRun spotify_dag @ 2024-08-21 00:35:00+00:00: scheduled__2024-08-21T00:35:00+00:00, state:running, queued_at: 2024-08-22 04:45:33.454240+00:00. externally triggered: False>
-[2024-08-22T04:47:05.759+0000] {logging_mixin.py:190} INFO - Failure caused by Bash command failed. The command returned a non-zero exit code 2.
-[2024-08-22T04:47:05.760+0000] {taskinstance.py:1225} INFO - Marking task as FAILED. dag_id=spotify_dag, task_id=whole_spotify_etl, run_id=scheduled__2024-08-21T00:35:00+00:00, execution_date=20240821T003500, start_date=20240822T044704, end_date=20240822T044705
-[2024-08-22T04:47:05.824+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/utils/email.py:155: RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/plugins/spotify_etl.py", line 180, in run_spotify_etl
+    token = get_token()
+            ^^^^^^^^^^^
+  File "/opt/airflow/plugins/spotify_etl.py", line 25, in get_token
+    auth_string = CLIENT_ID + ":" + CLIENT_SECRET
+                  ^^^^^^^^^
+NameError: name 'CLIENT_ID' is not defined
+[2024-08-22T16:23:17.052+0000] {logging_mixin.py:190} INFO - Task instance in failure state
+[2024-08-22T16:23:17.053+0000] {logging_mixin.py:190} INFO - Task start:2024-08-22 16:23:16.168726+00:00 end:2024-08-22 16:23:17.051667+00:00 duration:0.882941
+[2024-08-22T16:23:17.053+0000] {logging_mixin.py:190} INFO - Task:<Task(PythonOperator): whole_spotify_etl> dag:<DAG: spotify_dag> dagrun:<DagRun spotify_dag @ 2024-08-21 00:35:00+00:00: scheduled__2024-08-21T00:35:00+00:00, state:running, queued_at: 2024-08-22 16:21:52.083422+00:00. externally triggered: False>
+[2024-08-22T16:23:17.054+0000] {logging_mixin.py:190} INFO - Failure caused by name 'CLIENT_ID' is not defined
+[2024-08-22T16:23:17.054+0000] {taskinstance.py:1225} INFO - Marking task as FAILED. dag_id=spotify_dag, task_id=whole_spotify_etl, run_id=scheduled__2024-08-21T00:35:00+00:00, execution_date=20240821T003500, start_date=20240822T162316, end_date=20240822T162317
+[2024-08-22T16:23:17.133+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/utils/email.py:155: RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
   send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
 
-[2024-08-22T04:47:05.827+0000] {configuration.py:1058} WARNING - section/key [smtp/smtp_user] not found in config
-[2024-08-22T04:47:05.828+0000] {email.py:272} INFO - Email alerting: attempt 1
-[2024-08-22T04:47:05.859+0000] {configuration.py:1058} WARNING - section/key [smtp/smtp_user] not found in config
-[2024-08-22T04:47:05.864+0000] {email.py:272} INFO - Email alerting: attempt 1
-[2024-08-22T04:47:05.865+0000] {taskinstance.py:1234} ERROR - Failed to send email to: ['andresxmaldonado@gmail.com']
+[2024-08-22T16:23:17.136+0000] {configuration.py:1058} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-08-22T16:23:17.137+0000] {email.py:272} INFO - Email alerting: attempt 1
+[2024-08-22T16:23:17.186+0000] {configuration.py:1058} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-08-22T16:23:17.186+0000] {email.py:272} INFO - Email alerting: attempt 1
+[2024-08-22T16:23:17.187+0000] {taskinstance.py:1234} ERROR - Failed to send email to: ['andresxmaldonado@gmail.com']
 Traceback (most recent call last):
   File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
     TaskInstance._execute_task_with_callbacks(
@@ -72,9 +80,22 @@ Traceback (most recent call last):
   File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
     return func(self, *args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 249, in execute
-    raise AirflowException(
-airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 2.
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/plugins/spotify_etl.py", line 180, in run_spotify_etl
+    token = get_token()
+            ^^^^^^^^^^^
+  File "/opt/airflow/plugins/spotify_etl.py", line 25, in get_token
+    auth_string = CLIENT_ID + ":" + CLIENT_SECRET
+                  ^^^^^^^^^
+NameError: name 'CLIENT_ID' is not defined
 
 During handling of the above exception, another exception occurred:
 
@@ -141,8 +162,8 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.12/socket.py", line 850, in create_connection
     sock.connect(sa)
 OSError: [Errno 99] Cannot assign requested address
-[2024-08-22T04:47:05.931+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
-[2024-08-22T04:47:05.932+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 30 for task whole_spotify_etl (Bash command failed. The command returned a non-zero exit code 2.; 249)
+[2024-08-22T16:23:17.239+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-08-22T16:23:17.240+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 29 for task whole_spotify_etl (name 'CLIENT_ID' is not defined; 197)
 Traceback (most recent call last):
   File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
     ret = args.func(args, dag=self.dag)
@@ -188,8 +209,22 @@ Traceback (most recent call last):
   File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
     return func(self, *args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 249, in execute
-    raise AirflowException(
-airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 2.
-[2024-08-22T04:47:06.116+0000] {local_task_job_runner.py:261} INFO - Task exited with return code 1
-[2024-08-22T04:47:06.153+0000] {local_task_job_runner.py:240} INFO - ::endgroup::
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/plugins/spotify_etl.py", line 180, in run_spotify_etl
+    token = get_token()
+            ^^^^^^^^^^^
+  File "/opt/airflow/plugins/spotify_etl.py", line 25, in get_token
+    auth_string = CLIENT_ID + ":" + CLIENT_SECRET
+                  ^^^^^^^^^
+NameError: name 'CLIENT_ID' is not defined
+[2024-08-22T16:23:17.303+0000] {local_task_job_runner.py:261} INFO - Task exited with return code 1
+[2024-08-22T16:23:17.340+0000] {taskinstance.py:3891} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-08-22T16:23:17.342+0000] {local_task_job_runner.py:240} INFO - ::endgroup::

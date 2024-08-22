@@ -19,6 +19,21 @@
 					"@dbeaver-show-non-default-db@": "false"
 				}
 			}
+		},
+		"sqlite_jdbc-1917af0a55f-6a8b981265123d57": {
+			"provider": "sqlite",
+			"driver": "sqlite_jdbc",
+			"name": "SQLite@localhost",
+			"description": "Success",
+			"configuration": {
+				"url": "jdbc:sqlite:/opt/cloudbeaver/workspace/artist_top_tracks.sqlite",
+				"configurationType": "URL",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"bootstrap": {
+					"autocommit": true
+				}
+			}
 		}
 	},
 	"connection-types": {
