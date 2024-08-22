@@ -6,7 +6,6 @@
 GlobalConfiguration/
 .log
 logs/
-plugins/
 config/
 .work-data
 airflow.cfg

@@ -4,7 +4,7 @@ from airflow.operators.python_operator import PythonOperator
 from datetime import datetime, timedelta
 from spotify_etl import run_spotify_etl
 
-sys.path.append('/opt/airflow/app')
+sys.path.append('/opt/airflow/plugins')
 
 default_args = {
     'owner': 'airflow',
