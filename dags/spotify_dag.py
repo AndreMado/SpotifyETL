@@ -1,12 +1,11 @@
-from datetime import timedelta,datetime
 from airflow import DAG
-from airflow.utils.dates import days_ago
-from airflow.operators.python import PythonOperator
+from airflow.operators.bash import BashOperator
+from datetime import datetime, timedelta
 
 default_args = {
     'owner': 'airflow',
     'depends_on_past':False,
-    'start_date': datetime(2024,8,15),
+    'start_date': datetime(2024,8,21),
     'email': ['andresxmaldonado@gmail.com'],
     'email_on_failure':True,
     'email_on_retry':True,
@@ -18,16 +17,13 @@ dag = DAG(
     'spotify_dag',
     default_args = default_args,
     description='Implemeting Airflow to my Spotify ETL process dag',
-    schedule_interval= timedelta(minutes=3)
+    schedule_interval= timedelta(minutes=5)
 )
 
-def testing_fuction(text):
-    print(text)
-
-run_etl = PythonOperator(
+run_etl = BashOperator(
     task_id='whole_spotify_etl',
-    python_callable=testing_fuction("TESTING FUNCTION"),
-    dag=dag
+    bash_command='python /home/app/main.py',
+    dag=dag,
 )
 
 run_etl
