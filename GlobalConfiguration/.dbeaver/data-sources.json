@@ -1,0 +1,55 @@
+{
+	"folders": {},
+	"connections": {
+		"postgresql-template-1": {
+			"provider": "postgresql",
+			"driver": "postgres-jdbc",
+			"name": "PostgreSQL (Template)",
+			"template": true,
+			"read-only": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "5432",
+				"database": "postgres",
+				"url": "jdbc:postgresql://localhost:5432/postgres",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"closeIdleConnection": false,
+				"provider-properties": {
+					"@dbeaver-show-non-default-db@": "false"
+				}
+			}
+		},
+		"sqlite_jdbc-1917af0a55f-6a8b981265123d57": {
+			"provider": "sqlite",
+			"driver": "sqlite_jdbc",
+			"name": "SQLite@localhost",
+			"description": "Success",
+			"configuration": {
+				"url": "jdbc:sqlite:/opt/cloudbeaver/workspace/artist_top_tracks.sqlite",
+				"configurationType": "URL",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"bootstrap": {
+					"autocommit": true
+				}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"smart-commit": false,
+			"smart-commit-recover": true,
+			"auto-close-transactions": true,
+			"close-transactions-period": 1800,
+			"auto-close-connections": true,
+			"close-connections-period": 14400
+		}
+	}
+}
