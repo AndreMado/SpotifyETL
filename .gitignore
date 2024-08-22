@@ -1,1 +1,13 @@
 .env
+.data
+.metadata
+.locks
+.plugins
+GlobalConfiguration/
+.log
+logs/
+plugins/
+config/
+.work-data
+airflow.cfg
+webserver_config.py
